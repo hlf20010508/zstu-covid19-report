@@ -15,4 +15,12 @@ cd zstuAutoFillOut
 
 python3 setting.py
 
-输入账号
+输入学号密码以及是否显示浏览器界面
+
+运行主程序
+
+python3 zstuAutoFillOut.py
+
+chrome driver 可在 https://chromedriver.chromium.org/downloads 下载
+
+linux arm 用户可在 http://ports.ubuntu.com/pool/universe/c/chromium-browser/?C=M;O=D 选择合适的版本下载
