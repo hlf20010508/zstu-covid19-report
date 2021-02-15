@@ -21,6 +21,8 @@ python3 setting.py
 
 python3 zstuAutoFillOut.py
 
+要快速更改是否显示浏览器界面，只需要打开account.txt，修改最后一行的数字即可，0为不显示，1为显示
+
 chrome driver 可在 https://chromedriver.chromium.org/downloads 下载
 
 linux arm 用户可在 http://ports.ubuntu.com/pool/universe/c/chromium-browser/?C=M;O=D 选择合适的版本下载
