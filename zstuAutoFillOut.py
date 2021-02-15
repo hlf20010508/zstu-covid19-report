@@ -3,6 +3,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
+import os
 
 def zstu1(browser):
     browser.get('http://stu2.zstu.edu.cn/webroot/decision/url/mobile?redirect=http%3A%2F%2Fstu2.zstu.edu.cn%2Fwebroot%2Fdecision%2Furl%2Fmobile%3Fjs_api_path%3DL2NvbS9mci9wbHVnaW4vd2VpeGluL2Rpc3QvanMvd2VpWGluQ3VzdG9tQXBpLm1pbi5qcw%3D%3D%26sb%3DEAFDC54C57AEBA462875C1B8671EDE33%23%2Fdirectory#/login')
@@ -28,12 +29,15 @@ class zstu:
         account=open('account.txt','r')
         self.number=account.readline().strip('\n')
         self.password=account.readline().strip('\n')
+        option=account.readline().strip('\n')
         account.close()
         opt = Options()
         opt.add_argument('--headless')
         opt.add_argument('--disable-gpu')
-        #self.browser = webdriver.Chrome() #显示浏览器
-        self.browser = webdriver.Chrome(chrome_options=opt) #不显示浏览器
+        if option=='0':
+            self.browser = webdriver.Chrome(options=opt) #不显示浏览器
+        elif option=='1':
+            self.browser = webdriver.Chrome() #显示浏览器
         #self.browser.minimize_window()  # 最大化窗口
         self.wait = WebDriverWait(self.browser, 10) # 等待加载10s
         if num==1:
@@ -42,20 +46,25 @@ class zstu:
             zstu2(self.browser)
 
     def login1(self):
+        print('正在登录 E浙理 1')
         zstu1(self.browser)
         enter(self.wait,'%s'%self.number,'//*[@id="app"]/div/div[1]/div/div/div/div/div/div/div/div[2]/div[2]/div[1]/div/input')
         enter(self.wait,'%s'%self.password,'//*[@id="app"]/div/div[1]/div/div/div/div/div/div/div/div[2]/div[2]/div[2]/div[1]/input')
         click(self.wait,'//*[@id="app"]/div/div[1]/div/div/div/div/div/div/div/div[2]/div[2]/div[4]')
     
     def login2(self):
+        print('正在登录 E浙理 2')
         zstu2(self.browser)
         enter(self.wait,'%s'%self.number,'//*[@id="app"]/div/div[1]/div/div/div/div/div/div/div/div[2]/div[2]/div[1]/div/input')
         enter(self.wait,'%s'%self.password,'//*[@id="app"]/div/div[1]/div/div/div/div/div/div/div/div[2]/div[2]/div[2]/div[1]/input')
         click(self.wait,'//*[@id="app"]/div/div[1]/div/div/div/div/div/div/div/div[2]/div[2]/div[4]')
 
     def run(self):
+        print('登录成功')
         click(self.wait,'//*[@id="app"]/div/div[1]/div/div/div/div/div[1]/div/div/div/div[2]/div/div/div[3]/div/div/div[5]/div/div/div[3]')
+        print('进入健康申报')
         click(self.wait,'//*[@id="col_0_row_8"]')
+        print('进入健康申报主界面，正在尝试填表')
         click(self.wait,'//*[@id="col_2_row_14"]/div/div/div/div/div[1]/div/div[1]')
         click(self.wait,'//*[@id="col_2_row_15"]/div/div/div/div/div[1]/div/div[1]')
         click(self.wait,'//*[@id="col_4_row_17"]/div/div/div/div/div[1]/div/div[1]')
@@ -79,13 +88,19 @@ try:
     z1=zs.get_b()
     zs.login1()
     zs.run()
+    print('E浙理 1 打卡成功！')
     z1.close()
 except Exception:
     z1.close()
+    print('E浙理 1 打卡失败')
     zs=zstu(2)
     z2=zs.get_b()
     zs.login2()
     zs.run()
+    print('E浙理 2 打卡成功！')
     z2.close()
 finally:
     z2.close()
+    print('E 浙理2 打卡失败')
+    print('请稍后再试，或更新源代码')
+    os._exit(0)
