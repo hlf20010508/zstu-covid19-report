@@ -25,10 +25,15 @@ class zstu:
     #browser.set_page_load_timeout(10)
     #browser.set_script_timeout(10)
     def __init__(self,num):
+        account=open('account.txt','r')
+        self.number=account.readline().strip('\n')
+        self.password=account.readline().strip('\n')
+        account.close()
         opt = Options()
         opt.add_argument('--headless')
         opt.add_argument('--disable-gpu')
-        self.browser = webdriver.Chrome(chrome_options=opt)
+        #self.browser = webdriver.Chrome() #显示浏览器
+        self.browser = webdriver.Chrome(chrome_options=opt) #不显示浏览器
         #self.browser.minimize_window()  # 最大化窗口
         self.wait = WebDriverWait(self.browser, 10) # 等待加载10s
         if num==1:
@@ -38,14 +43,14 @@ class zstu:
 
     def login1(self):
         zstu1(self.browser)
-        enter(self.wait,'2019329621160','//*[@id="app"]/div/div[1]/div/div/div/div/div/div/div/div[2]/div[2]/div[1]/div/input')
-        enter(self.wait,'080013','//*[@id="app"]/div/div[1]/div/div/div/div/div/div/div/div[2]/div[2]/div[2]/div[1]/input')
+        enter(self.wait,'%s'%self.number,'//*[@id="app"]/div/div[1]/div/div/div/div/div/div/div/div[2]/div[2]/div[1]/div/input')
+        enter(self.wait,'%s'%self.password,'//*[@id="app"]/div/div[1]/div/div/div/div/div/div/div/div[2]/div[2]/div[2]/div[1]/input')
         click(self.wait,'//*[@id="app"]/div/div[1]/div/div/div/div/div/div/div/div[2]/div[2]/div[4]')
     
     def login2(self):
         zstu2(self.browser)
-        enter(self.wait,'2019329621160','//*[@id="app"]/div/div[1]/div/div/div/div/div/div/div/div[2]/div[2]/div[1]/div/input')
-        enter(self.wait,'080013','//*[@id="app"]/div/div[1]/div/div/div/div/div/div/div/div[2]/div[2]/div[2]/div[1]/input')
+        enter(self.wait,'%s'%self.number,'//*[@id="app"]/div/div[1]/div/div/div/div/div/div/div/div[2]/div[2]/div[1]/div/input')
+        enter(self.wait,'%s'%self.password,'//*[@id="app"]/div/div[1]/div/div/div/div/div/div/div/div[2]/div[2]/div[2]/div[1]/input')
         click(self.wait,'//*[@id="app"]/div/div[1]/div/div/div/div/div/div/div/div[2]/div[2]/div[4]')
 
     def run(self):
