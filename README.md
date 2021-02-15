@@ -13,24 +13,6 @@ git clone https://github.com/hlf20010508/zstuAutoFillOut.git
 
 cd zstuAutoFillOut
 
-在当前目录下创建account.txt文件，用于保存学号和密码，第一行为学号，第二行为密码
+python3 setting.py
 
-vim account.txt
-
-输入：
-
-201932962xxxx
-
-xxxxxx
-
-保存
-
-打开zstuAutoFillOut.py
-
-在第35行和36行选择是否在运行时显示浏览器，35行为显示，36行为不显示，选择一个注释掉即可
-
-保存
-
-python3 zstuAutoFillOut.py
-
-即可运行程序
+输入账号
