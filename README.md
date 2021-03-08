@@ -13,9 +13,13 @@ git clone https://github.com/hlf20010508/zstuAutoFillOut.git
 
 cd zstuAutoFillOut
 
-python3 setting.py
+安装chrome及chromedriver
+
+bash chrome.sh
 
 输入学号密码以及是否显示浏览器界面
+
+python3 setting.py
 
 运行主程序
 

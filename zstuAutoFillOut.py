@@ -34,6 +34,7 @@ class zstu:
         opt = Options()
         opt.add_argument('--headless')
         opt.add_argument('--disable-gpu')
+        opt.add_argument('--no-sandbox')
         if option=='0':
             self.browser = webdriver.Chrome(options=opt) #不显示浏览器
         elif option=='1':
