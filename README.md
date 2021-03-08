@@ -1,6 +1,8 @@
 # zstuAutoFillOut
 本代码会根据E浙理的页面不定期更新
 
+默认使用E浙理 1 打卡，打卡失败后会自动切换成E浙理 2 尝试打卡
+
 需要chrome， 并安装chrome driver， 且将chrome driver地址加入到环境变量中
 
 推荐使用chrome，其它浏览器不能保证运行成功
@@ -21,7 +23,11 @@ bash chrome.sh
 
 python3 setting.py
 
-运行主程序
+运行主程序+写入日志logs/mylog.log
+
+python3 run.py
+
+仅运行主程序
 
 python3 zstuAutoFillOut.py
 

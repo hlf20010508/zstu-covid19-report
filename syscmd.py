@@ -9,6 +9,6 @@ def cmd(cmd):
         stdin=subprocess.PIPE)
     proc.stdin.close()
     proc.wait()
-    result=proc.stdout.read().decode('gbk')
+    result=proc.stdout.read().decode('utf8')
     proc.stdout.close()
     return result

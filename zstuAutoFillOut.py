@@ -3,7 +3,6 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-import os
 
 def zstu1(browser):
     browser.get('http://stu2.zstu.edu.cn/webroot/decision/url/mobile?redirect=http%3A%2F%2Fstu2.zstu.edu.cn%2Fwebroot%2Fdecision%2Furl%2Fmobile%3Fjs_api_path%3DL2NvbS9mci9wbHVnaW4vd2VpeGluL2Rpc3QvanMvd2VpWGluQ3VzdG9tQXBpLm1pbi5qcw%3D%3D%26sb%3DEAFDC54C57AEBA462875C1B8671EDE33%23%2Fdirectory#/login')
@@ -104,4 +103,3 @@ finally:
     z2.close()
     print('E 浙理2 打卡失败')
     print('请稍后再试，或更新源代码')
-    os._exit(0)
