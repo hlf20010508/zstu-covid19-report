@@ -14,6 +14,6 @@ print('\n成功!')
 
 account=open('account.txt','w+')
 
-account.write('{}\n{}\n{}'.format(number,password,option))
+account.write('{}\n{}\n{}\n'.format(number,password,option))
 
 account.close()
