@@ -22,6 +22,7 @@ class zstu:
         account=open('account.txt','r')
         self.number=account.readline().strip('\n')
         self.password=account.readline().strip('\n')
+        self.phone=account.readline().strip('\n')
         option=account.readline().strip('\n')
         account.close()
         opt = Options()
@@ -49,6 +50,8 @@ class zstu:
         print('进入健康申报')
         click(self.wait,'//*[@id="col_0_row_8"]')
         print('进入健康申报主界面，正在尝试填表')
+        enter(self.wait,'%s'%self.phone,'//*[@id="col_2_row_10"]/div/div[1]/div/input')
+        print('输入手机号')
         click(self.wait,'//*[@id="col_2_row_14"]/div/div/div/div/div[1]/div/div[1]')
         print('完成 今日上午测量温度')
         click(self.wait,'//*[@id="col_2_row_15"]/div/div/div/div/div[1]/div/div[1]')
@@ -89,7 +92,7 @@ try:
     zs.run()
     print('E浙理 打卡成功！')
     z.close()
-finally:
+except Exception:
     z.close()
     print('E浙理 打卡失败')
     print('请稍后再试，或更新源代码')
