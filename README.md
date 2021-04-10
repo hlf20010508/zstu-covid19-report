@@ -23,6 +23,10 @@ python3 setting.py
 
 运行主程序+写入日志logs/mylog.log
 
+首先更改 zstuAutoFillOut.sh 中 zstuAutoFillOut.py 的路径为你的 zstuAutoFillOut.py 所在的绝对路径
+
+然后运行命令
+
 python3 run.py
 
 仅运行主程序
