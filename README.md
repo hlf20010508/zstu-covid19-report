@@ -1,5 +1,3 @@
- **本代码已失效** 
-<br/>
 本代码会根据E浙理的页面不定期更新
 <br/>
 需要chrome， 并安装chrome driver， 且将chrome driver地址加入到环境变量中
@@ -7,10 +5,6 @@
 如果要更换浏览器，更改zstuAutoFillOut.py中第33行或35行的webdriver即可
 <br/>
 使用方法：
-```
-git clone https://github.com/hlf20010508/zstuAutoFillOut.git
-cd zstuAutoFillOut
-```
 安装chrome及chromedriver
 ```
 bash chrome.sh
