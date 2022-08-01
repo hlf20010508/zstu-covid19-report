@@ -1,3 +1,2 @@
 __pycache__/
-account.txt
-logs/
+.DS_Store
