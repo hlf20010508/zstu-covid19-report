@@ -1,0 +1,18 @@
+name: Docker Run
+
+on:
+  push:
+    branches: [ "test" ]
+  schedule:
+    - cron: '0 22 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: docker run
+      env:
+            ZSTU_ID: ${{ secrets.ZSTU_ID }}
+            ZSTU_PASSWD: ${{ secrets.ZSTU_PASSWD }}
+      run: docker run -e ZSTU_ID -e ZSTU_PASSWD  -i zstu-report bash -c "cd /srv/zstu && python main.py"
