@@ -16,4 +16,4 @@ ZSTU_ID=`echo $user | awk -F " " '{print $1}'`
 ZSTU_PASSWD=`echo $user | awk -F " " '{print $2}'`
 fi
 echo "尝试创建容器并第一次运行"
-sudo docker run --name zstu-covid19-report -e ZSTU_ID=$ZSTU_ID -e ZSTU_PASSWD=$ZSTU_PASSWD -i zstu-covid19-report bash -c "cd /srv/zstu && python main.py"
+sudo docker run --name zstu-covid19-report -e ZSTU_ID=$ZSTU_ID -e ZSTU_PASSWD=$ZSTU_PASSWD -e WXPUSHER_APPTOKEN=$WXPUSHER_APPTOKEN -e WXPUSHER_UID=$WXPUSHER_UID -i zstu-covid19-report bash -c "cd /srv/zstu && python main.py"

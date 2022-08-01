@@ -6,6 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from time import sleep, strftime, localtime, time
 import os
 import json
+from notification import notify
 
 class ZSTU:
     def __init__(self, headless=True):
@@ -71,15 +72,12 @@ class ZSTU:
         print('选择抗原结果：%s'%self.detect_dict[self.antigen])
         self.click_by_xpath('//*[@class="van-row iform-item iform-radiobox iform-item-DQXXZT"]/div/div/div[2]/div/div/div/div[1]/div/div[%s]/span'%self.learning_status) # 默认在校学习
         print('选择学习状态：%s'%self.learning_status_dict[self.learning_status])
-        try:
-            self.click_by_xpath('//*[@id="iform"]/div[1]/div[4]/div/button') # 提交
-            print('点击提交')
-            self.click_by_xpath('/html/body/div[3]/div[3]/button[2]') # 确认提交
-            print('确认提交')
-            self.click_by_xpath('/html/body/div[3]/div[2]/button') # 提交成功
-            print('提交成功')
-        except:
-            print('确认打卡失败')
+        self.click_by_xpath('//*[@id="iform"]/div[1]/div[4]/div/button') # 提交
+        print('点击提交')
+        self.click_by_xpath('/html/body/div[3]/div[3]/button[2]') # 确认提交
+        print('确认提交')
+        self.click_by_xpath('/html/body/div[3]/div[2]/button') # 提交成功
+        print('提交成功')
         self.close()
         
     def close(self):
@@ -110,4 +108,11 @@ class ZSTU:
 
 if __name__ == '__main__':
     client = ZSTU()
-    client.run()
+    try:
+        client.run()
+    except:
+        log = os.popen('bash ./logs.sh')
+        try:
+            notify(log.read())
+        except:
+            print('未设置微信通知')
