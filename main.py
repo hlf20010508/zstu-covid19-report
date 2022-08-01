@@ -116,7 +116,7 @@ if __name__ == '__main__':
     try:
         client.run()
     except:
-        with os.popen('bash logs.sh') as log:
+        with os.popen('bash log.sh') as log:
             try:
                 notify(log.read())
             except:

@@ -43,7 +43,7 @@ git pull origin master
 bash upgrade.sh
 
 # 查看当天日志
-bash logs.sh
+bash log.sh
 
 # 卸载容器和镜像
 bash uninstall.sh
