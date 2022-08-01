@@ -64,6 +64,7 @@ class ZSTU:
         try:
             self.login()
         except:
+            print('登录失败')
             raise RuntimeError('登录失败')
 
         print('等待alert出现')
@@ -80,24 +81,28 @@ class ZSTU:
             self.enter_by_xpath(self.location, '//*[@id="iform"]/div[1]/div[3]/form/div[6]/div/div/div[2]/div/div/div/div[1]/input') # 输入地理位置
             print('输入地理位置：%s'%self.location)
         except:
+            print('地理位置输入失败')
             raise RuntimeError('地理位置输入失败')
 
         try:
             self.click_by_xpath('//*[@class="van-row iform-item iform-radiobox iform-item-SFYHSYXBG"]/div/div/div[2]/div/div/div/div[1]/div/div[%s]/span'%self.dna) # 默认核酸结果阴性
             print('选择核酸结果：%s'%self.detect_dict[self.dna])
         except:
+            print('核酸结果选择失败')
             raise RuntimeError('核酸结果选择失败')
 
         try:
             self.click_by_xpath('//*[@class="van-row iform-item iform-radiobox iform-item-KYJCJG"]/div/div/div[2]/div/div/div/div[1]/div/div[%s]/span'%self.antigen) # 默认抗原结果阴性
             print('选择抗原结果：%s'%self.detect_dict[self.antigen])
         except:
+            print('抗原结果选择失败')
             raise RuntimeError('抗原结果选择失败')
 
         try:
             self.click_by_xpath('//*[@class="van-row iform-item iform-radiobox iform-item-DQXXZT"]/div/div/div[2]/div/div/div/div[1]/div/div[%s]/span'%self.learning_status) # 默认在校学习
             print('选择学习状态：%s'%self.learning_status_dict[self.learning_status])
         except:
+            print('学习情况选择失败')
             raise RuntimeError('学习情况选择失败')
 
         try:
@@ -108,6 +113,7 @@ class ZSTU:
             self.click_by_xpath('/html/body/div[3]/div[2]/button') # 提交成功
             print('提交成功')
         except:
+            print('提交失败')
             raise RuntimeError('提交失败')
 
         self.close()
