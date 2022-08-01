@@ -1,3 +1,3 @@
 #! /bin/bash
 
-sudo docker start zstu-covid19-report
+sudo docker start -i zstu-covid19-report
