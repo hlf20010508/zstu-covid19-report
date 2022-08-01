@@ -109,7 +109,7 @@ class ZSTU:
             print('提交成功')
         except:
             raise RuntimeError('提交失败')
-            
+
         self.close()
         
     def close(self):
