@@ -3,7 +3,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from time import sleep
+from time import sleep, strftime, localtime, time
 import os
 import json
 
@@ -53,6 +53,7 @@ class ZSTU:
         self.click_by_xpath('/html/body/app-root/app-right-root/rg-page-container/div/div[2]/div[2]/div[2]/div[2]/div[1]/div/div[1]/app-login-normal/div/form/div[6]/div/button')
         
     def run(self):
+        print('\n'+strftime('%Y-%m-%d %H:%M:%S',localtime(time())))
         self.login()
         print('等待alert出现')
         try:
