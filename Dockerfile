@@ -4,6 +4,7 @@
 # :license: MIT, see LICENSE for more details.
 
 FROM hlf01/python-selenium:latest
+RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 RUN pip install requests
 RUN mkdir /srv/zstu
 COPY . /srv/zstu
