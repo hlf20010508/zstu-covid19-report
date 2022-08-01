@@ -116,8 +116,8 @@ if __name__ == '__main__':
     try:
         client.run()
     except:
-        log = os.popen('bash logs.sh')
-        try:
-            notify(log.read())
-        except:
-            print('未设置微信通知')
+        with os.popen('bash logs.sh') as log:
+            try:
+                notify(log.read())
+            except:
+                print('未设置微信通知')
