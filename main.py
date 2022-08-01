@@ -1,3 +1,8 @@
+# :project: zstuAutoFillOut
+# :author: L-ING
+# :copyright: (C) 2022 L-ING <hlf01@icloud.com>
+# :license: MIT, see LICENSE for more details.
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
@@ -111,7 +116,7 @@ if __name__ == '__main__':
     try:
         client.run()
     except:
-        log = os.popen('bash ./logs.sh')
+        log = os.popen('bash logs.sh')
         try:
             notify(log.read())
         except:

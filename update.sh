@@ -1,4 +1,8 @@
 #! /bin/bash
+# :project: zstuAutoFillOut
+# :author: L-ING
+# :copyright: (C) 2022 L-ING <hlf01@icloud.com>
+# :license: MIT, see LICENSE for more details.
 
 echo "删除过期容器"
 sudo docker rm zstu-covid19-report
