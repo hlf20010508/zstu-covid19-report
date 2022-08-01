@@ -15,7 +15,7 @@ uid = os.environ['WXPUSHER_UID']
 def notify(log):
     params = {
         "appToken": appToken,
-        "content":"异常提醒：zstu-covid19-report申报失败。\n"+log,
+        "content":"异常提醒：zstu-covid19-report申报失败。\n"+str(log),
         "contentType":1,
         "uids": [uid]
     }
