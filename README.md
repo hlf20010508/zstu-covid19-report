@@ -34,9 +34,13 @@ bash build.sh
 # 运行容器
 bash run.sh
 
-# 升级
+# 升级容器
 git pull origin master
 bash update.sh
+
+# 升级镜像
+git pull origin master
+bash upgrade.sh
 
 # 查看当天日志
 bash logs.sh
