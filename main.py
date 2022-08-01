@@ -60,29 +60,56 @@ class ZSTU:
         
     def run(self):
         print('\n'+strftime('%Y-%m-%d %H:%M:%S',localtime(time())))
-        self.login()
+
+        try:
+            self.login()
+        except:
+            raise RuntimeError('登录失败')
+
         print('等待alert出现')
         try:
             self.alert_handle()
         except:
             print('没有出现alert')
+
         print('开始打卡')
-        self.browser.execute_script('document.getElementsByClassName("van-field__control")[6].readOnly = false') # 取消地理位置的只读状态，使其可以修改
-        self.clear_by_xpath('//*[@id="iform"]/div[1]/div[3]/form/div[6]/div/div/div[2]/div/div/div/div[1]/input') # 清除地理位置框
-        self.enter_by_xpath(self.location, '//*[@id="iform"]/div[1]/div[3]/form/div[6]/div/div/div[2]/div/div/div/div[1]/input') # 输入地理位置
-        print('输入地理位置：%s'%self.location)
-        self.click_by_xpath('//*[@class="van-row iform-item iform-radiobox iform-item-SFYHSYXBG"]/div/div/div[2]/div/div/div/div[1]/div/div[%s]/span'%self.dna) # 默认核酸结果阴性
-        print('选择核酸结果：%s'%self.detect_dict[self.dna])
-        self.click_by_xpath('//*[@class="van-row iform-item iform-radiobox iform-item-KYJCJG"]/div/div/div[2]/div/div/div/div[1]/div/div[%s]/span'%self.antigen) # 默认抗原结果阴性
-        print('选择抗原结果：%s'%self.detect_dict[self.antigen])
-        self.click_by_xpath('//*[@class="van-row iform-item iform-radiobox iform-item-DQXXZT"]/div/div/div[2]/div/div/div/div[1]/div/div[%s]/span'%self.learning_status) # 默认在校学习
-        print('选择学习状态：%s'%self.learning_status_dict[self.learning_status])
-        self.click_by_xpath('//*[@id="iform"]/div[1]/div[4]/div/button') # 提交
-        print('点击提交')
-        self.click_by_xpath('/html/body/div[3]/div[3]/button[2]') # 确认提交
-        print('确认提交')
-        self.click_by_xpath('/html/body/div[3]/div[2]/button') # 提交成功
-        print('提交成功')
+
+        try:
+            self.browser.execute_script('document.getElementsByClassName("van-field__control")[6].readOnly = false') # 取消地理位置的只读状态，使其可以修改
+            self.clear_by_xpath('//*[@id="iform"]/div[1]/div[3]/form/div[6]/div/div/div[2]/div/div/div/div[1]/input') # 清除地理位置框
+            self.enter_by_xpath(self.location, '//*[@id="iform"]/div[1]/div[3]/form/div[6]/div/div/div[2]/div/div/div/div[1]/input') # 输入地理位置
+            print('输入地理位置：%s'%self.location)
+        except:
+            raise RuntimeError('地理位置输入失败')
+
+        try:
+            self.click_by_xpath('//*[@class="van-row iform-item iform-radiobox iform-item-SFYHSYXBG"]/div/div/div[2]/div/div/div/div[1]/div/div[%s]/span'%self.dna) # 默认核酸结果阴性
+            print('选择核酸结果：%s'%self.detect_dict[self.dna])
+        except:
+            raise RuntimeError('核酸结果选择失败')
+
+        try:
+            self.click_by_xpath('//*[@class="van-row iform-item iform-radiobox iform-item-KYJCJG"]/div/div/div[2]/div/div/div/div[1]/div/div[%s]/span'%self.antigen) # 默认抗原结果阴性
+            print('选择抗原结果：%s'%self.detect_dict[self.antigen])
+        except:
+            raise RuntimeError('抗原结果选择失败')
+
+        try:
+            self.click_by_xpath('//*[@class="van-row iform-item iform-radiobox iform-item-DQXXZT"]/div/div/div[2]/div/div/div/div[1]/div/div[%s]/span'%self.learning_status) # 默认在校学习
+            print('选择学习状态：%s'%self.learning_status_dict[self.learning_status])
+        except:
+            raise RuntimeError('学习情况选择失败')
+
+        try:
+            self.click_by_xpath('//*[@id="iform"]/div[1]/div[4]/div/button') # 提交
+            print('点击提交')
+            self.click_by_xpath('/html/body/div[3]/div[3]/button[2]') # 确认提交
+            print('确认提交')
+            self.click_by_xpath('/html/body/div[3]/div[2]/button') # 提交成功
+            print('提交成功')
+        except:
+            raise RuntimeError('提交失败')
+            
         self.close()
         
     def close(self):
@@ -115,9 +142,8 @@ if __name__ == '__main__':
     client = ZSTU()
     try:
         client.run()
-    except:
-        with os.popen('today=$(date "+%Y-%m-%d") && sudo docker logs --since $today zstu-covid19-report') as log:
-            try:
-                notify(log.read())
-            except:
-                print('未设置微信通知')
+    except Exception as ex:
+        try:
+            notify(ex)
+        except:
+            print('未设置微信通知')
