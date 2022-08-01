@@ -116,7 +116,7 @@ if __name__ == '__main__':
     try:
         client.run()
     except:
-        with os.popen('bash log.sh') as log:
+        with os.popen('today=$(date "+%Y-%m-%d") && sudo docker logs --since $today zstu-covid19-report') as log:
             try:
                 notify(log.read())
             except:
