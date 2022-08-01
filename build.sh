@@ -9,6 +9,10 @@ read -p "请输入你的学号：" ZSTU_ID
 read -p "请输入密码：" ZSTU_PASSWD
 echo $ZSTU_ID > user.conf
 echo $ZSTU_PASSWD >> user.conf
+else
+user=$(cat user.conf)
+ZSTU_ID=`echo $user | awk -F " " '{print $1}'`
+ZSTU_PASSWD=`echo $user | awk -F " " '{print $2}'`
 fi
 echo "尝试创建容器并第一次运行"
 sudo docker run --name zstu-covid19-report -e ZSTU_ID=$ZSTU_ID -e ZSTU_PASSWD=$ZSTU_PASSWD -i zstu-covid19-report bash -c "cd /srv/zstu && python main.py"
