@@ -3,6 +3,8 @@
 
 本项目使用docker自动部署环境
 
+适合运行在个人服务器
+
 ```sh
 # 安装本项目
 git clone https://github.com/hlf20010508/zstu-covid19-report.git
