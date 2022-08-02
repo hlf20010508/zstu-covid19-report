@@ -6,8 +6,9 @@
 
 set -e
 sudo docker build -f ./Dockerfile -t zstu-covid19-report --no-cache .
-set +e
 echo "镜像创建完成"
+set +e
+sudo docker image prune -a --force
 if [ ! -f "user.conf" ]; then
 read -p "请输入你的学号：" ZSTU_ID
 read -p "请输入密码：" ZSTU_PASSWD
