@@ -5,10 +5,9 @@
 # :license: MIT, see LICENSE for more details.
 
 set -e
-sudo docker build -f ./Dockerfile -t zstu-covid19-report .
+sudo docker build -f ./Dockerfile -t zstu-covid19-report --force-rm .
 set +e
 sudo docker rmi $(sudo docker images -f "dangling=true" -q)
-sudo docker rmi hlf01/python-selenium
 echo "镜像创建完成"
 if [ ! -f "user.conf" ]; then
 read -p "请输入你的学号：" ZSTU_ID
