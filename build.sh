@@ -5,7 +5,7 @@
 # :license: MIT, see LICENSE for more details.
 
 set -e
-sudo docker build -f ./Dockerfile -t zstu-covid19-report --force-rm .
+sudo docker build -f ./Dockerfile -t zstu-covid19-report --no-cache .
 set +e
 echo "镜像创建完成"
 if [ ! -f "user.conf" ]; then
