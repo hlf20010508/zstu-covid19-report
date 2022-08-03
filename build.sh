@@ -8,7 +8,6 @@ set -e
 sudo docker build -f ./Dockerfile -t zstu-covid19-report --no-cache .
 echo "镜像创建完成"
 set +e
-sudo docker image prune -a --force
 if [ ! -f "user.conf" ]; then
 read -p "请输入你的学号：" ZSTU_ID
 read -p "请输入密码：" ZSTU_PASSWD
@@ -21,3 +20,5 @@ ZSTU_PASSWD=`echo $user | awk -F " " '{print $2}'`
 fi
 echo "尝试创建容器并第一次运行"
 sudo docker run --name zstu-covid19-report -e ZSTU_ID=$ZSTU_ID -e ZSTU_PASSWD=$ZSTU_PASSWD -e WXPUSHER_APPTOKEN=$WXPUSHER_APPTOKEN -e WXPUSHER_UID=$WXPUSHER_UID -i zstu-covid19-report sh -c "cd /srv/zstu && python main.py"
+echo "正在清理中间镜像"
+sudo docker image prune -a --force
