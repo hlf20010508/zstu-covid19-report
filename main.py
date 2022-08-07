@@ -43,6 +43,9 @@ class ZSTU:
         opt.add_argument('--headless')
         opt.add_argument('--disable-gpu')
         opt.add_argument('--no-sandbox')
+        #禁止图片和css加载
+        prefs = {"profile.managed_default_content_settings.images": 2,'permissions.default.stylesheet':2}
+        opt.add_experimental_option("prefs", prefs)
         
         if headless:
             self.browser = webdriver.Chrome(options=opt) #不显示浏览器
