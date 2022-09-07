@@ -163,7 +163,7 @@ class ZSTU:
         sleep(1)
 
 if __name__ == '__main__':
-    client = ZSTU(headless=False)
+    client = ZSTU()
     try:
         client.run()
     except Exception as ex:
