@@ -65,9 +65,9 @@ class ZSTU:
 
     def login(self):
         print('正在登录')
-        self.enter_by_xpath(self.id, '/html/body/app-root/app-right-root/rg-page-container/div/div[2]/div[2]/div[2]/div[2]/div[1]/div/div[1]/app-login-normal/div/form/div[1]/nz-input-group/input')
-        self.enter_by_xpath(self.passwd, '/html/body/app-root/app-right-root/rg-page-container/div/div[2]/div[2]/div[2]/div[2]/div[1]/div/div[1]/app-login-normal/div/form/div[2]/nz-input-group/input')
-        self.click_by_xpath('/html/body/app-root/app-right-root/rg-page-container/div/div[2]/div[2]/div[2]/div[2]/div[1]/div/div[1]/app-login-normal/div/form/div[6]/div/button')
+        self.enter_by_xpath(self.id, '/html/body/app-root/app-right-root/rg-page-container/div/div[2]/div[2]/div[2]/div[2]/div/app-login-auth-panel/div/div[1]/app-login-normal/div/form/div[1]/nz-input-group/input')
+        self.enter_by_xpath(self.passwd, '/html/body/app-root/app-right-root/rg-page-container/div/div[2]/div[2]/div[2]/div[2]/div/app-login-auth-panel/div/div[1]/app-login-normal/div/form/div[2]/nz-input-group/input')
+        self.click_by_xpath('/html/body/app-root/app-right-root/rg-page-container/div/div[2]/div[2]/div[2]/div[2]/div/app-login-auth-panel/div/div[1]/app-login-normal/div/form/div[6]/div/button')
         
     def run(self):
         print('\n'+strftime('%Y-%m-%d %H:%M:%S',localtime(time())))
