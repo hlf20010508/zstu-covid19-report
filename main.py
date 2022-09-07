@@ -21,7 +21,7 @@ class ZSTU:
         with open('option.json') as file:
             option = json.load(file)
             self.location = option['Location']
-            self.arrive_status = option['Arrive-Status']
+            self.arrive_status = str(option['Arrive-Status'])
             self.dna = str(option['DNA-Result'])
             self.antigen = str(option['Antigen-Result'])
             self.learning_status = str(option['Learning-status'])
@@ -163,7 +163,7 @@ class ZSTU:
         sleep(1)
 
 if __name__ == '__main__':
-    client = ZSTU()
+    client = ZSTU(headless=False)
     try:
         client.run()
     except Exception as ex:
