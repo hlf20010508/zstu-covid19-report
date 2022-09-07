@@ -21,9 +21,17 @@ class ZSTU:
         with open('option.json') as file:
             option = json.load(file)
             self.location = option['Location']
+            self.arrive_status = option['Arrive-Status']
             self.dna = str(option['DNA-Result'])
             self.antigen = str(option['Antigen-Result'])
             self.learning_status = str(option['Learning-status'])
+        
+        self.arrive_status_dict = {
+            '1': '在（入）校，下沙及临平校区',
+            '2': '在（入）校，下沙校区',
+            '3': '在（入）校，临平校区',
+            '4': '不在（入）校'
+        }
         
         self.detect_dict = {
             '1': '未检测',
@@ -86,6 +94,13 @@ class ZSTU:
         except:
             print('地理位置输入失败')
             raise RuntimeError('地理位置输入失败')
+
+        try:
+            self.click_by_xpath('//*[@class="van-row iform-item iform-radiobox iform-item-ARRIVESTATUS"]/div/div/div[2]/div/div/div/div[1]/div/div[%s]/span'%self.arrive_status) # 默认核酸结果阴性
+            print('选择入校状态：%s'%self.arrive_status_dict[self.arrive_status])
+        except:
+            print('入校状态选择失败')
+            raise RuntimeError('入校状态选择失败')
 
         try:
             self.click_by_xpath('//*[@class="van-row iform-item iform-radiobox iform-item-SFYHSYXBG"]/div/div/div[2]/div/div/div/div[1]/div/div[%s]/span'%self.dna) # 默认核酸结果阴性
