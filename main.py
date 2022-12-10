@@ -124,6 +124,13 @@ class ZSTU:
             raise RuntimeError('学习情况选择失败')
 
         try:
+            self.click_by_xpath('//*[@class="van-row iform-item iform-radiobox iform-item-SFLKXY"]/div/div/div[2]/div/div/div/div[1]/div/div[2]/span') # 默认否
+            print('选择近24小时没有离开过校园')
+        except:
+            print('近24小时没有离开过校园选择失败')
+            raise RuntimeError('近24小时没有离开过校园选择失败')
+
+        try:
             self.click_by_xpath('//*[@id="iform"]/div[1]/div[4]/div/button') # 提交
             print('点击提交')
             self.click_by_xpath('/html/body/div[3]/div[3]/button[2]') # 确认提交
@@ -164,10 +171,12 @@ class ZSTU:
 
 if __name__ == '__main__':
     client = ZSTU()
+    # client = ZSTU(0)
     try:
         client.run()
     except Exception as ex:
         try:
             notify(ex)
+            # pass
         except:
             print('未设置微信通知')
