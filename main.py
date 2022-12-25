@@ -102,19 +102,19 @@ class ZSTU:
             print('入校状态选择失败')
             raise RuntimeError('入校状态选择失败')
 
-        try:
-            self.click_by_xpath('//*[@class="van-row iform-item iform-radiobox iform-item-SFYHSYXBG"]/div/div/div[2]/div/div/div/div[1]/div/div[%s]/span'%self.dna) # 默认核酸结果阴性
-            print('选择核酸结果：%s'%self.detect_dict[self.dna])
-        except:
-            print('核酸结果选择失败')
-            raise RuntimeError('核酸结果选择失败')
+        # try:
+        #     self.click_by_xpath('//*[@class="van-row iform-item iform-radiobox iform-item-SFYHSYXBG"]/div/div/div[2]/div/div/div/div[1]/div/div[%s]/span'%self.dna) # 默认核酸结果阴性
+        #     print('选择核酸结果：%s'%self.detect_dict[self.dna])
+        # except:
+        #     print('核酸结果选择失败')
+        #     raise RuntimeError('核酸结果选择失败')
 
-        try:
-            self.click_by_xpath('//*[@class="van-row iform-item iform-radiobox iform-item-KYJCJG"]/div/div/div[2]/div/div/div/div[1]/div/div[%s]/span'%self.antigen) # 默认抗原结果阴性
-            print('选择抗原结果：%s'%self.detect_dict[self.antigen])
-        except:
-            print('抗原结果选择失败')
-            raise RuntimeError('抗原结果选择失败')
+        # try:
+        #     self.click_by_xpath('//*[@class="van-row iform-item iform-radiobox iform-item-KYJCJG"]/div/div/div[2]/div/div/div/div[1]/div/div[%s]/span'%self.antigen) # 默认抗原结果阴性
+        #     print('选择抗原结果：%s'%self.detect_dict[self.antigen])
+        # except:
+        #     print('抗原结果选择失败')
+        #     raise RuntimeError('抗原结果选择失败')
 
         try:
             self.click_by_xpath('//*[@class="van-row iform-item iform-radiobox iform-item-DQXXZT"]/div/div/div[2]/div/div/div/div[1]/div/div[%s]/span'%self.learning_status) # 默认在校学习
