@@ -22,8 +22,8 @@ class ZSTU:
             option = json.load(file)
             self.location = option['Location']
             self.arrive_status = str(option['Arrive-Status'])
-            self.dna = str(option['DNA-Result'])
-            self.antigen = str(option['Antigen-Result'])
+            # self.dna = str(option['DNA-Result'])
+            # self.antigen = str(option['Antigen-Result'])
             self.learning_status = str(option['Learning-status'])
         
         self.arrive_status_dict = {
@@ -33,12 +33,12 @@ class ZSTU:
             '4': '不在（入）校'
         }
         
-        self.detect_dict = {
-            '1': '未检测',
-            '2': '阴性',
-            '3': '阳性',
-            '4': '已检测，结果未出',
-        }
+        # self.detect_dict = {
+        #     '1': '未检测',
+        #     '2': '阴性',
+        #     '3': '阳性',
+        #     '4': '已检测，结果未出',
+        # }
 
         self.learning_status_dict = {
             '1': '在校学习（含科研）',
